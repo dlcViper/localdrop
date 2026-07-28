@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.8
-  shelf: ^1.4.2
+  shelf: ^1.4.1
   shelf_router: ^1.1.4
   flutter_foreground_task: ^8.17.0
   qr_flutter: ^4.1.0
