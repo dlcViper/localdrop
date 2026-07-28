@@ -79,7 +79,6 @@ class _LogScreenState extends State<LogScreen> {
                   line,
                   style: TextStyle(fontSize: 0.8, fontFamily: 'monospace', color: color),
                   maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
                 );
               },
             ),

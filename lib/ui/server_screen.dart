@@ -216,7 +216,7 @@ class _ServerScreenState extends State<ServerScreen> {
     final pct = t.bytesTotal > 0
         ? ((t.bytesDone / t.bytesTotal) * 100).toStringAsFixed(1) + '%'
         : (t.status == 'completed' ? '100%' : '—');
-    StatusColor color;
+    Color color;
     switch (t.status) {
       case 'completed': color = Colors.green; break;
       case 'failed': color = Colors.red; break;
