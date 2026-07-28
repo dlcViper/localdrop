@@ -3,28 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:open_settings_plus/open_settings_plus.dart';
 
-
-
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) {
-    runApp(const LocalDropApp());
-  });
-}
-
-class LocalDropApp extends StatelessWidget {
-  const LocalDropApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'LocalDrop',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(useMaterial3: true),
-      home: const PermissionGate(),
-    );
-  }
-}
+import 'server_screen.dart';
 
 /// On first launch, triggers the real Android permission dialog.
 /// If denied, shows an explanatory screen with settings button.
@@ -46,7 +25,6 @@ class _PermissionGateState extends State<PermissionGate> {
   }
 
   Future<void> _check() async {
-    // Check storage permission first
     final status = await Permission.storage.status;
     if (status.isGranted) {
       setState(() {
@@ -55,7 +33,6 @@ class _PermissionGateState extends State<PermissionGate> {
       });
       return;
     }
-    // Request it — this fires the real system dialog, not a silent prompt
     final result = await Permission.storage.request();
     setState(() {
       _granted = result.isGranted;
