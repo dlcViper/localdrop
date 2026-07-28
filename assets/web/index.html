@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LocalDrop</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #f5f5f5; color: #222; padding: 1rem; max-width: 960px; margin: auto; }
+  h1 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+  h2 { font-size: 1.1rem; margin: 1rem 0 0.5rem; }
+  input, select, button { font-size: 0.95rem; padding: 0.4rem 0.6rem; }
+  button { cursor: pointer; background: #1a73e8; color: white; border: none; border-radius: 4px; padding: 0.4rem 0.8rem; }
+  button:hover { background: #1557c4; }
+  table { border-collapse: collapse; width: 100%; margin-top: 0.5rem; }
+  th, td { text-align: left; padding: 0.3rem 0.6rem; border-bottom: 1px solid #ddd; font-size: 0.9rem; }
+  tr.dir-row { background: #eef; }
+  tr:hover { background: #fffde7; }
+  #login { margin-top: 3rem; text-align: center; }
+  #login input { width: 200px; text-align: center; font-size: 1.2rem; letter-spacing: 0.5em; }
+  #login-error { color: #c00; margin-top: 0.5rem; }
+  #app { display: none; }
+  #breadcrumb { margin: 0.5rem 0; font-size: 0.9rem; }
+  #breadcrumb a { color: #1a73e8; text-decoration: none; }
+  #breadcrumb span { color: #555; }
+  #drop-zone { border: 2px dashed #ccc; border-radius: 8px; padding: 2rem; text-align: center; color: #888; margin: 0.5rem 0; }
+  #drop-zone.drag-over { border-color: #1a73e8; background: #e8f0fe; }
+  .info-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin: 0.5rem 0; font-size: 0.9rem; }
+  .info-row > div { background: #fff; border: 1px solid #ddd; border-radius: 6px; padding: 0.4rem 0.8rem; }
+  .info-row button { margin-left: 0.5rem; }
+  #filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 0.5rem 0; align-items: center; }
+  #filters input { flex: 1; min-width: 120px; }
+  #filters select { max-width: 120px; }
+  .btn-dl { font-size: 0.8rem; padding: 0.2rem 0.5rem; }
+</style>
+</head>
+<body>
+
+<div id="login">
+  <h1>LocalDrop</h1>
+  <p>Enter the 6-digit PIN shown in the app</p>
+  <form id="login-form">
+    <input id="pin-input" type="text" inputmode="numeric" maxlength="6" autocomplete="off" autofocus>
+    <br><br>
+    <button type="submit">Connect</button>
+  </form>
+  <p id="login-error"></p>
+</div>
+
+<div id="app">
+  <h1>LocalDrop</h1>
+  <div class="info-row">
+    <div id="server-url"></div>
+    <div id="shared-path"></div>
+  </div>
+  <div id="breadcrumb"></div>
+
+  <div id="filters">
+    <input id="search-input" type="text" placeholder="Search…">
+    <select id="filter-select">
+      <option value="all">All</option>
+      <option value="dirs">Folders</option>
+      <option value="files">Files</option>
+    </select>
+    <select id="sort-select">
+      <option value="name-asc">Name ↑</option>
+      <option value="name-desc">Name ↓</option>
+      <option value="size-desc">Size ↓</option>
+      <option value="size-asc">Size ↑</option>
+      <option value="date-desc">Date ↓</option>
+      <option value="date-asc">Date ↑</option>
+      <option value="type-asc">Type ↑</option>
+    </select>
+  </div>
+  <div id="drop-zone">Drop files here or click to browse</div>
+  <input type="file" id="file-input" multiple hidden>
+
+  <h2>Files</h2>
+  <div id="files-root" style="font-size:0.85rem;color:#666;"></div>
+  <table>
+    <thead><tr><th></th><th>Name</th><th>Type</th><th>Size</th><th>Modified</th><th></th></tr></thead>
+    <tbody id="files-tbody"></tbody>
+  </table>
+
+  <h2>Transfers</h2>
+  <table>
+    <thead><tr><th>Dir</th><th>File</th><th>Progress</th><th>Bytes</th><th>Status</th></tr></thead>
+    <tbody id="transfers-tbody"></tbody>
+  </table>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
