@@ -1,1 +1,32 @@
-localdrop
+# Flutter/Dart
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
+**/doc/api/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Android generated/config
+android/.gradle/
+android/app/.gradle/
+android/app/.dart_tool/
+android/app/build/
+android/app/captures/
+android/key.properties
+android/app/GeneratedPluginRegistrant.java
+android/gradle/wrapper/gradle-wrapper.jar
+*.jks
+*.keystore
+
+# System
+.DS_Store
+.env
+*.log
+.vscode/
