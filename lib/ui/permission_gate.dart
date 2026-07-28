@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:open_settings_plus/open_settings_plus.dart';
 
-import '../services/server_controller.dart';
-import '../services/app_logger.dart';
 import 'server_screen.dart';
 import 'settings_screen.dart';
 import 'log_screen.dart';

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../services/server_controller.dart';
-import '../services/app_logger.dart';
 import 'settings_screen.dart';
 import 'log_screen.dart';
-import '../models/transfer.dart';
 
 class ServerScreen extends StatefulWidget {
   const ServerScreen({super.key});
