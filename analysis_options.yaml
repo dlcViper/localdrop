@@ -4,3 +4,7 @@ linter:
   rules:
     prefer_const_constructors: false
     avoid_print: false
+    unnecessary_import: false
+    prefer_collection_literals: false
+    use_build_context_synchronously: false
+    prefer_interpolation_to_compose_strings: false
