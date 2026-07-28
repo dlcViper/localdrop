@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:open_settings_plus/open_settings_plus.dart';
 
 import 'server_screen.dart';
 
