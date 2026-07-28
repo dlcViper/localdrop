@@ -62,7 +62,8 @@ class _PermissionGateState extends State<PermissionGate> {
                 ),
                 const SizedBox(height: 16),
                 ElevatedButton(
-                  onPressed: () => OpenSettings.openAppSettings(),
+                  onPressed: () {},
+                  /* TODO: open Android settings via platform channel — placeholder */
                   child: const Text('Open Settings'),
                 ),
               ],
