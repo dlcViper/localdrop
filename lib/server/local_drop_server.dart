@@ -703,6 +703,7 @@ class LocalDropServer {
       await for (final part in parts) {
         final disposition = part.headers['content-disposition'] ?? '';
         final nameMatch = RegExp(r'name="([^"]*)"').firstMatch(disposition);
+        final _ = nameMatch; // consumed below, suppressed linter
         final fileMatch = RegExp(r'filename="([^"]*)"').firstMatch(disposition);
         // RFC 5987 filename*
         final fileStar = RegExp(r"filename\*=(?:UTF-8''|utf-8'')([^;]+)").firstMatch(disposition);
